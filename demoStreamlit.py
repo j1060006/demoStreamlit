@@ -40,9 +40,9 @@ if btn:
         
     df['logReturn'] = df['logReturn'].fillna(0)
     
-    avg = df['logReturn'].mean() * 252 * 100
-    std = np.sqrt(252) * np.std(df['logReturn']) * 100
-    mdd = df['DrowDown'].min()
+    avg = float(df['logReturn'].mean() * 252 * 100)
+    std = float(np.sqrt(252) * np.std(df['logReturn']) * 100)
+    mdd = float(df['DrowDown'].min())
     res_col_left, res_col_mid,  res_col_right= st.columns(3)
     res_col_left.metric('平均年化報酬率', value="{} %".format(np.round(avg, 2)))    
     res_col_mid.metric('平均年化波動率', value="{} %".format(np.round(std, 2)))    
