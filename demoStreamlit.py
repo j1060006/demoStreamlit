@@ -51,51 +51,23 @@ if btn:
 
     st.write(df)
 
-    # df.reset_index(drop=False, inplace=True)
-    # df['Date'] = [dt.datetime.combine(i, dt.datetime.min.time()) for i in df['Date']]    
-    # st.line_chart(df, x='Date', y=['Close', 'Adj Close'])
 
     options ={
         'title':{'text': str(stockId), }, 
         'tooltip':{}, 
         'xAxis':{'type': 'category', 'data':[str(i) for i in df.index], }, 
-        # 'yAxis':[{'type':'value', 'position':'left'}, {'type':'value', 'position':'right'}], 
         'yAxis':[{'type':'value', }], 
         'series':[
-            # {'data':[i for i in df['Close']], 'type':'line', 'yAxisIndex':0},
-            # {'data':[i for i in df['DrowDown']], 'type':'line', 'areaStyle':{}, 'yAxisIndex':1}    
             {'data':[i for i in df['Adj Close']], 'type':'line', }, 
             {'data':[i for i in df['DrowDown']], 'type':'line', 'areaStyle':{}, }
         ]
     }
     
-    # options = {
-    # "xAxis": {
-    #     "type": "category",
-    #     "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    # },
-    # "yAxis": {"type": "value"},
-    # "series": [
-    #     {"data": [820, 932, 901, 934, 1290, 1330, 1320], "type": "line"}
-    # ],
-    # }
     st_echarts(options=options)
 
 
-    # chart = st.line_chart(np.array([[df.loc[df.index[0], 'Close']]]))
-    # for i in range(1, df.shape[0]):
-    #     chart.add_rows(np.array([[df.loc[df.index[i], 'Close']]]))
-    #     time.sleep(0.05)
 
 
 
 
-
-# You can use a column just like st.sidebar:
-# bar = st.progress(0, "{}".format("0" + "%"))
-# for i in range(100):
-#     time.sleep(0.1)
-#     i = i + 1
-#     bar.progress(i, '{}'.format(str(i) + "%"))    
-    
 
