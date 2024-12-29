@@ -13,7 +13,7 @@ import math
 st.set_page_config(page_title="Stock Buy & Hold", page_icon="📈")
 
 st.header('繪製個股Buy & Hold策略')
-syb = ['SPY', 'QQQ', 'DIA', 'IWM']
+syb = ['SPY', 'QQQ', 'DIA', 'IWM', 'VOO', 'VT', 'VTI', 'TLT', 'SMH', 'BND', 'SOXX', 'VXUS']
 stockId = st.selectbox('選擇個股', syb)
 
 left_column, right_column = st.columns(2)
