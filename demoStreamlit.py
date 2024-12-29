@@ -35,10 +35,8 @@ if btn:
         dd.append(df.loc[df.index[i],'Adj Close']-hh)
     df.insert(6, 'DrowDown', dd)  
     
-    try:
-        df['logReturn'] = np.log(df['Adj Close'] / df['Adj Close'].shift(1))  
-    except:
-        df['logReturn'] = 0
+    df['logReturn'] = np.log(df['Adj Close'] / df['Adj Close'].shift(1))  
+    df['logReturn'] = 0
         
     df['logReturn'] = df['logReturn'].fillna(0)
     
@@ -46,9 +44,9 @@ if btn:
     std = np.sqrt(252) * np.std(df['logReturn']) * 100
     mdd = df['DrowDown'].min()
     res_col_left, res_col_mid,  res_col_right= st.columns(3)
-    res_col_left.metric('平均年化報酬率', value="{} %".format(avg.round(2)))    
-    res_col_mid.metric('平均年化波動率', value="{} %".format(std.round(2)))    
-    res_col_right.metric('持倉期間最大拉回 / 股', value="{} USD".format(mdd.round(2)))    
+    res_col_left.metric('平均年化報酬率', value="{} %".format(np.round(avg, 2)))    
+    res_col_mid.metric('平均年化波動率', value="{} %".format(np.round(std, 2)))    
+    res_col_right.metric('持倉期間最大拉回 / 股', value="{} USD".format(np.round(mdd, 2)))
 
     df = df.round(2)
 
