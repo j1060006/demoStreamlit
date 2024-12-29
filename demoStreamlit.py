@@ -49,7 +49,6 @@ if btn:
 
     df = df.round(2)
 
-    st.write(df)
 
 
     options ={
@@ -65,7 +64,7 @@ if btn:
     
     st_echarts(options=options)
 
-
+    st.write(df)
 
 
 
