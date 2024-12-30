@@ -55,7 +55,7 @@ if btn:
     a1.metric('平均年化報酬率 %', value="{} %".format(np.round(avg, 2)))    
     a2.metric('平均年化波動率 %', value="{} %".format(np.round(std, 2)))    
     a3.metric('持倉期間最大拉回 %', value="{} %".format(np.round(mdd, 2)))
-    a4.metric('持倉期間獲利', value="{} %".format(np.round(df.loc[df.index[-1], 'cumLogReturn'] * initCapital, 2)))
+    a1.metric('持倉期間獲利', value="{} USD".format(np.round(df.loc[df.index[-1], 'cumLogReturn'] * initCapital, 1)))
 
 
 
