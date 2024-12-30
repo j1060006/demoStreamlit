@@ -15,7 +15,7 @@ st.set_page_config(page_title="Stock Buy & Hold", page_icon="📈")
 st.header('繪製個股Buy & Hold策略')
 syb = ['SPY', 'QQQ', 'DIA', 'IWM', 'VOO', 'VT', 'VTI', 'TLT', 'SMH', 'BND', 'SOXX', 'VXUS']
 stockId = st.selectbox('選擇個股', syb)
-initCapital = st.number_input('起始投入資金', min_value=0, step=100)
+initCapital = st.number_input('起始投入資金', min_value=0, step=100, value=1000)
 left_column, right_column = st.columns(2)
 startDate = left_column.date_input('回測起始日')
 endDate = right_column.date_input('回測終止日')
@@ -55,7 +55,7 @@ if btn:
     a1.metric('平均年化報酬率 %', value="{} %".format(np.round(avg, 2)))    
     a2.metric('平均年化波動率 %', value="{} %".format(np.round(std, 2)))    
     a3.metric('持倉期間最大拉回 %', value="{} %".format(np.round(mdd, 2)))
-    a1.metric('持倉期間獲利', value="{} USD".format(np.round(df.loc[df.index[-1], 'cumLogReturn'] * initCapital, 1)))
+    a1.metric('持倉期間獲利 USD', value="$ {}".format(np.round(df.loc[df.index[-1], 'cumLogReturn'] * initCapital, 2)))
 
 
 
