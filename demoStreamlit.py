@@ -17,8 +17,12 @@ syb = ['SPY', 'QQQ', 'DIA', 'IWM', 'VOO', 'VT', 'VTI', 'TLT', 'SMH', 'BND', 'SOX
 stockId = st.selectbox('選擇個股', syb)
 initCapital = st.number_input('起始投入資金', min_value=0, step=100, value=1000)
 left_column, right_column = st.columns(2)
-startDate = left_column.date_input('回測起始日')
-endDate = right_column.date_input('回測終止日')
+
+endDateDT = dt.datetime.now().date()
+startDateDT = endDateDT - dt.timedelta(days=1000)
+
+startDate = left_column.date_input('回測起始日', value=startDateDT)
+endDate = right_column.date_input('回測終止日', value=endDateDT)
 
 btn = st.button('回測開始')
 
